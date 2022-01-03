@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a176d52ad3.js" crossorigin="anonymous"></script>
+    <title>index</title>
+</head>
+<body>
+  <!--pc-->
+  <nav class="navbar bg-dark sm-hidden">
+    <div class="container">
+      <div class="row">
+        
+        <a href="#" class="home sm-hidden">
+          <h1>오늘룩 관리자 페이지</h1>
+        </a>
+
+        <ul class="nav-list mr-auto">
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link active">운영</a>
+            <ul class="nav-list-item-drop">
+              <li>데쉬보드</li>
+              <li>메인</li>
+              <li>유저</li>
+              <li>포스팅</li>
+              <li>보유중인모델</li>
+              <li>위반사항로그</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">기능</a>
+            <ul class="nav-list-item-drop">
+              <li>선택가능한의상수</li>
+              <li>상태변경</li>
+              <li>스케줄러</li>
+              <li>모델선택</li>
+              <li>포인트</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">CSV</a>
+            <ul class="nav-list-item-drop">
+              <li>결제</li>
+              <li>택배</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">추가</a>
+            <ul class="nav-list-item-drop">
+              <li>브랜드계정</li>
+              <li>색상</li>
+              <li>사이즈</li>
+              <li>스타일</li>
+              <li>카테고리</li>
+              <li>주소</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">물류</a>
+            <ul class="nav-list-item-drop">
+              <li>의상상태</li>
+              <li>준비완료</li>
+              <li>반납완료</li>
+              <li>위반사항</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="login-section">
+          <a href="#" class="d-none">로그인</a>
+          <a href="#" class="active">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="bg-dark menu-section sm-hidden">
+    <form class="container menubar" role="">
+      <div class="row">
+        <!--상태-->
+        <div class="form-group col-sm-2 col-md-4 col-lg-2">
+          <label for="" class="label-group">상태</label>
+          
+          <div class="select-group">
+            <select class="form-select">
+              <option value="all">전체</option>
+              <option value="2">입고중</option>
+              <option value="3">진행중</option>
+              <option value="4">반납중</option>
+              <option value="5">반납</option>
+              <option value="6">계절아웃</option>
+            </select>
+          </div>
+        </div>
+        <!--계절-->
+        <div class="form-group col-sm-2 col-md-4 col-lg-2">
+          <label for="" class="label-group">계절</label>
+          
+          <div class="select-group">
+            <select class="form-select">
+              <option value="all">전체</option>
+              <option value="2">봄</option>
+              <option value="3">여름</option>
+              <option value="4">가을</option>
+              <option value="5">겨울</option>
+            </select>
+          </div>
+        </div>
+        <!--상위카테고리-->
+        <div class="form-group col-sm-2 col-md-4 col-lg-2">
+          <label for="" class="label-group">상위<br />카테고리</label>
+          
+          <div class="select-group">
+            <select class="form-select">
+              <option value="all">전체</option>
+              <option value="2">22</option>
+              <option value="3">33</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-1"></div>
+        <!--검색--><!--input type="search" 검색아이콘 클릭할수있도록 작업해야함-->
+        <div class="form-group col-sm-4 col-md-12 col-lg-5">
+          <label for="" class="label-group">검색</label>
+          <div class="search-group">
+            <div class="select-group">
+              <select class="form-select">
+                <option value="all">검색</option>
+                <option value="2">모델명</option>
+                <option value="3">제품명</option>
+              </select>
+            </div>
+
+            <input type="text" class="form-input" id="" placeholder="" value="" />
+
+            <button type="button" class="btn-search btn">검색</button>
+          </div>
+        </div>
+       
+        <div class="form-group btn-gruop col-md-12">
+          <button type="button" class="btn-primary btn">입고중으로 변경</button>
+          <button type="button" class="btn-secondary btn">진행중으로 변경</button>
+          <button type="button" class="btn-primary btn">반납중으로 변경</button>
+          <button type="button" class="btn-primary btn">반납으로 변경</button>
+          <button type="button" class="btn-primary btn">계절아웃으로 변경</button>
+        </div>
+        <!--모델명-->
+        <div class="form-group col-sm-4 d-none">
+          <label for="" class="label-group">모델명</label>
+          
+          <div class="search-group">
+            <input class="form-input" type="search" placeholder="모델명입력">
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!--물류테이블-->
+  <section class="tbl-section container sm-hidden">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"><input type="checkbox"></th>
+          <th scope="col">브랜드/제품명/색상/부자재</th>
+          <th scope="col">이미지</th>
+          <th scope="col">사이즈</th>
+          <th scope="col">계절</th>
+          <th scope="col">수량</th>
+          <th scope="col">상태</th>
+          <th scope="col">요금제/금액</th>
+          <th scope="col">메모</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row"><a href="#" class="txt-color">수정</a></th>
+          <td>
+            <input type="checkbox" id="" class="check-active">
+          </td>
+          <td class="text-left">
+            <ul>
+              <li>에고이스트</li>
+              <li>프린팅 미니 플리츠 원피스</li>
+              <li>검정</li>
+              <li>벨트</li>
+            </ul>
+          </td>
+          <td>
+            <div class="slide-section">
+              <input class="d-none" type="radio" name="slide" id="slide01" checked>
+              <input class="d-none" type="radio" name="slide" id="slide02">
+              <input class="d-none" type="radio" name="slide" id="slide03">
+
+              <div class="slidewrap">
+                <ul>
+                  <li>img</li>
+                  <li>img</li>
+                  <li>img</li>
+                </ul>
+              </div>
+            </div>
+          </td>
+          <td>55</td>
+          <td>
+            <ul>
+              <li>봄</li>
+              <li>가을</li>
+            </ul>
+          </td>
+          <td>1</td>
+          <td>입고중</td>
+          <td>
+            <div class="price-cell">
+              <ul>
+                <li>스탠다드<input type="text" class="input-price">원</li>
+                <li>프리미엄<input type="text" class="input-price">원</li>
+              </ul>
+              <button type="button" class="btn-outlined btn">저장</button>
+            </div>
+          </td>
+          <td>
+            <button type="button" data-tooltip="입력된 메모내용이 보입니다." class="btn-outlined btn btn-tooltip">메모</button>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row"><a href="#" class="txt-color">수정</a></th>
+          <td>
+            <input type="checkbox" id="" class="check-active">
+          </td>
+          <td class="text-left">
+            <ul>
+              <li>에고이스트</li>
+              <li>프린팅 미니 플리츠 미니 플리츠 원피스</li>
+              <li>검정</li>
+              <li>벨트</li>
+            </ul>
+          </td>
+          <td>
+            <div class="slide-section">
+              <input class="d-none" type="radio" name="slide" id="slide01" checked>
+              <input class="d-none" type="radio" name="slide" id="slide02">
+              <input class="d-none" type="radio" name="slide" id="slide03">
+
+              <div class="slidewrap">
+                <ul>
+                  <li>img</li>
+                  <li>img</li>
+                  <li>img</li>
+                </ul>
+              </div>
+            </div>
+          </td>
+          <td>55</td>
+          <td>
+            <ul>
+              <li>봄</li>
+              <li>가을</li>
+            </ul>
+          </td>
+          <td>1</td>
+          <td>입고중</td>
+          <td>
+            <div class="price-cell">
+              <ul>
+                <li>스탠다드<input type="text" class="input-price">원</li>
+                <li>프리미엄<input type="text" class="input-price">원</li>
+              </ul>
+              <button type="button" class="btn-outlined btn">저장</button>
+            </div>
+          </td>
+          <td>
+            <button type="button" data-tooltip="입력된 메모내용이 보입니다." class="btn-outlined btn btn-tooltip">메모</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  
+  <!--모바일물류-->
+  <nav class="navbar bg-dark sm-only">
+    <div class="container">
+      <div class="row">
+        
+        <a href="#" class="home sm-hidden">
+          <h1>오늘룩 관리자 페이지</h1>
+        </a>
+
+        <ul class="nav-list mr-auto">
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link active">운영</a>
+            <ul class="nav-list-item-drop">
+              <li>데쉬보드</li>
+              <li>메인</li>
+              <li>유저</li>
+              <li>포스팅</li>
+              <li>보유중인모델</li>
+              <li>위반사항로그</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">기능</a>
+            <ul class="nav-list-item-drop">
+              <li>선택가능한의상수</li>
+              <li>상태변경</li>
+              <li>스케줄러</li>
+              <li>모델선택</li>
+              <li>포인트</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">CSV</a>
+            <ul class="nav-list-item-drop">
+              <li>결제</li>
+              <li>택배</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">추가</a>
+            <ul class="nav-list-item-drop">
+              <li>브랜드계정</li>
+              <li>색상</li>
+              <li>사이즈</li>
+              <li>스타일</li>
+              <li>카테고리</li>
+              <li>주소</li>
+            </ul>
+          </li>
+          <li class="nav-item nav-list-item"><a href="#" class="nav-link">물류</a>
+            <ul class="nav-list-item-drop">
+              <li>의상상태</li>
+              <li>준비완료</li>
+              <li>반납완료</li>
+              <li>위반사항</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="login-section">
+          <a href="#" class="d-none">로그인</a>
+          <a href="#" class="active">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="bg-dark menu-section sm-only">
+    <form class="container menubar" role="">
+      <div class="row">
+        <!--준비완료-->
+        <div class="form-group col-sm-2">
+          <label for="" class="label-group">준비완료</label>
+          
+          <div class="select-group">
+            <select class="form-select">
+              <option value="all">전체</option>
+              <option value="2">준비미완료</option>
+              <option value="3">준비완료</option>
+            </select>
+          </div>
+        </div>
+        <!--수령장소-->
+        <div class="form-group col-sm-2">
+          <label for="" class="label-group">수령장소</label>
+          
+          <div class="select-group">
+            <select class="form-select">
+              <option value="all">전체</option>
+              <option value="2">교대</option>
+              <option value="3">이태원</option>
+              <option value="4">택배</option>
+            </select>
+          </div>
+        </div>
+        <!--검색--><!--input type="search" 검색아이콘 클릭할수있도록 작업해야함-->
+        <div class="form-group col-sm-4">
+          <label for="" class="label-group">검색</label>
+          <div class="search-group">
+            <div class="select-group">
+              <select class="form-select">
+                <option value="all">검색</option>
+                <option value="2">모델명</option>
+                <option value="3">제품명</option>
+              </select>
+            </div>
+
+            <input type="text" class="form-input" id="" placeholder="" value="" />
+
+            <button type="button" class="btn-search btn">검색</button>
+          </div>
+        </div>
+        <!--기간--><!--input type="date" 사용안하고 text로 해놨음-->
+        <div class="form-group col-sm-4">
+          <label for="" class="label-group">기간</label>
+          
+          <div class="date-group">
+            <input type="text" class="form-input" id="" value="" placeholder="선택" required />
+            <sapn>~</sapn>
+            <input type="text" class="form-input" id="" value="" placeholder="선택" required />
+          </div>
+        </div>     
+        <!--모델명-->
+        <div class="form-group col-sm-4 d-none">
+          <label for="" class="label-group">모델명</label>
+          
+          <div class="search-group">
+            <input class="form-input" type="search" placeholder="모델명입력">
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+  <!--모바일물류테이블-->
+  <section class="tbl-section container sm-only d-none">
+    <ul>
+      <li>
+        <div class="sm-list-thumb">
+          <div class="slide-section">
+            <input class="d-none" type="radio" name="slide" id="slide01" checked>
+            <input class="d-none" type="radio" name="slide" id="slide02">
+            <input class="d-none" type="radio" name="slide" id="slide03">
+
+            <div class="slidewrap">
+              <ul>
+                <li>img</li>
+                <li>img</li>
+                <li>img</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sm-list-info">
+          <dl>
+            <dh>김사랑A</dh>
+            <dd>프린팅 미니 플리츠 원피스</dd>
+            <dd>검정</dd>
+            <dd>벨트</dd>
+          </dl>
+          <div class="hour">
+            <dl>
+              <dd>반납시점:2022-02-04</dd>
+              <dd>반납시점:2022-02-04</dd>
+              <dd>반납시점:2022-02-04</dd>
+            </dl>
+          </div>
+
+          <div class="sm-list-info-bottom">
+            <button>반납완료</button>            
+          </div>
+        </div>
+      </li>
+    </ul>
+    
+  </section>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>

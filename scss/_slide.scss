@@ -1,0 +1,46 @@
+.slide-section input[id=slide]{
+    display: none;
+  }
+  .slide-section .slidewrap{
+    width: 160px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .slide-section .slidelist{
+    white-space: nowrap;
+    font-size: 0;
+  }
+  .slide-section .slidelist > li{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    transition:all .5s;
+  }
+  .slide-section .slidelist > li > a{
+    display: block;
+    position: relative;
+  }
+  .slide-section .slidelist > li > a img{
+    width: 80px;
+    height: 80px;
+  }
+  .slide-section .slidelist label{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px;
+    cursor: pointer;
+  }
+  .slide-section .slidelist .left{
+    left: 0px;
+    background: url('/img/list-photo-btn-prev.png') left center / 30px 30px no-repeat;
+  }
+  .slide-section .slidelist .right{
+    right: 0px;
+    background: url('/img/list-photo-btn-next.png') right center / 30px 30px no-repeat;
+  }
+  .slide-section [id="slide01"]:checked ~ .slidewrap .slidelist > li {transform: translateX(0%);}
+  .slide-section [id="slide02"]:checked ~ .slidewrap .slidelist > li {transform: translateX(-100%);}
+  .slide-section [id="slide03"]:checked ~ .slidewrap .slidelist > li {transform: translateX(-200%);}
+  
