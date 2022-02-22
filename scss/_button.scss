@@ -1,13 +1,12 @@
 %btn-base {
     padding: 0 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include inline-flexbox;
+    flex-shrink: 0;
     border-radius: $radius;
   
     &:disabled {
-      cursor: not-allowed;
-      opacity: 0.4;
+      pointer-events: none;
+      opacity: 0.6;
     }
 }
   
@@ -15,52 +14,71 @@
     @extend %btn-base;
     color: $color-white;
     background-color: $color-primary;   
-
-    &:not(:disabled):hover{
-
-    }
 }
 .btn-secondary {
     @extend %btn-base;
     color: $color-white;
-    background-color: $color-pink;
-
-    &:not(:disabled):hover{
-        
-    }
+    background-color: $color-point;
 }
 .btn-search {
     @extend %btn-base;
     color: $color-white;
-    background-color: $color-gray;
-
-    &:not(:disabled):hover{
-        
-    }
+    background-color: $color-secondary;
 }
 .btn-danger {
     @extend %btn-base;
     color: $color-white;
-    background-color: $color-red;
-
-    &:not(:disabled):hover{
-        
-    }
+    background-color: $color-danger;
 }
 .btn-outlined {
+    border-radius: $radius;
     background-color: $color-white;
-    border: 1px solid $color-gray-light-e;
+    border: 1px solid $color-border;
+    color: $color-black;
 
     &:not(:disabled):hover{
-        border: 1px solid $color-gray;
+        border: 1px solid $color-secondary;
+    }
+    &:disabled {
+        pointer-events: none;
+        opacity: 0.6;
     }
 }
-
+.btn-outlined-p {
+    border-radius: $radius;
+    background-color: $color-white;
+    border: 1px solid $color-point !important;
+    color: $color-point !important;
+    &:not(:disabled):hover{
+        opacity: .5;
+        transition: opacity 200ms ease-in-out;
+    }
+    &:disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+}
+.btn-outlined-b {
+    border-radius: $radius;
+    background-color: $color-white;
+    border: 1px solid $color-blue !important;
+    color: $color-blue !important;
+    &:not(:disabled):hover{
+        opacity: .5;
+        transition: opacity 200ms ease-in-out;
+    }
+    &:disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+}
 .btn-primary:not(:disabled):hover,
 .btn-secondary:not(:disabled):hover,
 .btn-search:not(:disabled):hover,
 .btn-danger:not(:disabled):hover{
     opacity: .7;
+    transition: opacity 200ms ease-in-out;
+    box-shadow: inset 0 1px rgba(0,0,0,.1);
 }
 
 .btn {
@@ -70,15 +88,7 @@
     height: $lg-height-input;
     padding: 0 22px;
     position: relative;
-}
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-    .btn-gruop .btn {
-        width: 90%;           
-        padding: 0 10px;
-    }
-}
-@media screen and (max-width: 767px){
-    .btn {
+    @include responsive(M){
         font-size: $sm-font;
         line-height: 16px;
         letter-spacing: -0.005m;
@@ -86,9 +96,47 @@
         padding: 0 10px;
     }
 }
-.full{
-    width: 100%;
+.table{
+    .btn{
+        height: $sm-height-input;
+        line-height: 16px;
+    }
 }
-.harf{
-    width: 50px;
+
+.full{width: 100%;}
+.harf{width: 50%;}
+//top버튼
+#goBtn{
+    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;        
+    border: 1px solid #e8e8e8; 
+    background-color: rgba(255,255,255,.9);        
+    color: $color-bg-dark; 
+    box-shadow: -2px -3px 5px 0 rgba(0, 0, 0, .25);
+    transform: rotate(180deg);
+    transition: all .4s ease-in-out;
+    z-index: $topbutton-level; 
+    &::after{
+        content: "\e906";
+        font-family: "oneulook";
+        font-size: 1.5rem;                         
+        padding: 5px;
+    }
+    &:active{
+        background-color: rgba(0,0,0,.5);
+        color: $color-white;
+    }
+  }
+//더보기버튼
+.btn-more{
+    margin: 30px $sm-space;
+    >i{
+        padding-top:5px;
+        padding-left: 10px;
+    }
 }

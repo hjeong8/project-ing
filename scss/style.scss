@@ -1,105 +1,47 @@
-@import 'contants';
-@import 'reset';
-@import 'grid';
+@import 'constants/constants';
 
-@import 'modal';
+@import 'base/reset';
+@import 'base/grid';
+@import 'base/fonts';
+
+@import 'mixins/flexbox';
+@import 'mixins/responsive';
+
 @import 'button';
 @import 'form';
-@import 'menu';
-@import 'nav';
-@import 'table';
-@import 'pagination';
-@import 'slide';
-@import 'tooltip';
+
+@import 'pages/login';
 
 .container {
-    width: 100%;
-    height: inherit;
-    padding-left: $lg-space;
-    padding-right: $lg-space;
-    margin: 0 auto;
+  width: 100%;
+  height: inherit;
+  padding-left: $lg-space;
+  padding-right: $lg-space;
+  margin: 0 auto; 
+
+  @include responsive(T){
+    padding-left: $sm-space;
+    padding-right: $sm-space;
+  }
 }
 .row {
     height: inherit;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    @include responsive(M){
+      justify-content: flex-start;
+    }
 } 
-.mr-auto{
-    margin-right: auto;
+@include responsive(M){
+  body{
+    font-size: $sm-font;
+  }
 }
-
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-    .container{
-        padding-left: $md-space;
-        padding-right: $md-space;
-    }
-}
-
-
-@media screen and (max-width: 767px){
-    body{
-        font-size: $sm-font;
-    }
-    .container{
-        padding-left: $sm-space;
-        padding-right: $sm-space;
-    }
-    .row{
-        justify-content: flex-start;
-    }
-    .mr-auto{
-        margin-right: 0;
-    }
-}
-
 .text-center{text-align: center;}
 .text-left{text-align: left;}
+.p-relative{position: relative;}
 .d-none{display:none;}
-
-
-.txt-color{
-    font-weight: 700;
-    color: $color-primary;
-  }
-  .txt-color:hover{
-    font-weight: 400;
-    text-decoration: underline;
-  }
-
-@media screen and (min-width: 768px) {
-  .sm-only {
-    display: none !important; 
-  } 
-}
-@media screen and (max-width: 767px) {
-  .md-only {
-    display: none !important; 
-  } 
-}
-@media screen and (min-width: 1200px) {
-  .md-only {
-    display: none !important; 
-  } 
-}
-@media screen and (max-width: 1199px) {
-  .lg-only {
-    display: none !important; 
-  } 
-}
-@media screen and (max-width: 767px) {
-  .sm-hidden {
-    display: none !important; 
-  } 
-}
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-  .md-hidden {
-    display: none !important; 
-  } 
-}
-@media screen and (min-width: 1200px) {
-  .lg-hidden {
-    display: none !important; 
-  } 
-}
+.hidden{visibility: hidden;}
+.mb-0{margin-bottom: 0 !important}
 

@@ -1,0 +1,53 @@
+@mixin responsive($screen) {
+  @if ($screen == 'D') {
+    @media screen and (max-width: $lg-breakpoint) {
+      @content;
+    }
+  }
+  @if ($screen == 'T') {
+    @media screen and (max-width: $lg-breakpoint - 1px) {
+      @content;
+    }
+  }
+  @if ($screen == 'M') {
+    @media screen and (max-width: $md-breakpoint - 1px) {
+      @content;
+    }
+  }
+}
+
+@media screen and (min-width: $md-breakpoint) {
+  .sm-only {
+    display: none !important; 
+  } 
+}
+@media screen and (max-width: 767px) {
+  .md-only {
+    display: none !important; 
+  } 
+}
+@media screen and (min-width: $lg-breakpoint) {
+  .md-only {
+    display: none !important; 
+  } 
+}
+@media screen and (max-width: 1199px) {
+  .lg-only {
+    display: none !important; 
+  } 
+}
+@media screen and (max-width: 767px) {
+  .sm-hidden {
+    display: none !important; 
+  } 
+}
+@media screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint) {
+  .md-hidden {
+    display: none !important; 
+  } 
+}
+@media screen and (min-width: $lg-breakpoint) {
+  .lg-hidden {
+    display: none !important; 
+  } 
+}

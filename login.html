@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <!--jquery ui css-->   
+    <link rel="stylesheet" href="/jquery/jquery-ui.min.css">
+    <link rel="stylesheet" href="/jquery/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/jquery/jquery-ui.theme.min.css">
+    <!--jquery-->
+    <script src="/jquery/jquery-3.6.0.min.js"></script>
+    <!--jquery ui-->
+    <script src="/jquery/jquery-ui.min.js"></script>
+    <title>login</title>       
+  </head>
+  <body>
+    <section class="login-section">
+      <div class="login-area">
+        <h1>오늘룩 브랜드 관리자</h1>
+        <form class="" id="loginform" name="" method="" action="" enctype="multipart/form-data" >
+          <div class="login-content">
+            <div class="login-form-control">
+              <input class="form-input" id="loginid" name="id" type="text" value="" placeholder="아이디" />   
+              <small>아이디를 입력해주세요.</small>
+            </div>
+            <div class="login-form-control">
+              <input class="form-input" id="loginpw" name="passwd" type="password" value="" placeholder="비밀번호" />   
+              <small>비밀번호를 입력해주세요.</small>
+            </div>
+            <button class="btn-primary btn" id="login" type="submit" aria-label="로그인 버튼">로그인</button>
+          </div>
+        </form>
+        <div class="login-info">
+          <p>아이디, 비밀번호가 기억나지 않으시면<br />아래 번호로 연락주세요.</p>
+          <span>1811 - 9152</span>
+        </div>
+      </div>
+    </section>
+
+ 
+    <script>
+    //login validation
+    $(function () {
+        const loginform = document.getElementById('loginform');
+        const loginid = document.getElementById('loginid');
+        const loginpw = document.getElementById('loginpw');
+
+        loginform.addEventListener('submit', e => {
+          e.preventDefault();
+		  if (checkInputs() == false)
+			{
+				return;
+			}
+          
+		  loginform.submit();
+        });
+
+        function checkInputs() {
+          // trim to remove the whitespaces
+          const usernameValue = loginid.value.trim();
+          const passwordValue = loginpw.value.trim();
+          
+          if(usernameValue === '') {
+            setErrorFor(loginid, '아이디를 입력해주세요.');
+			return false;
+          } else {
+            setSuccessFor(loginid);
+          }		
+          
+          if(passwordValue === '') {
+            setErrorFor(loginpw, '비밀번호를 입력해주세요.');
+			return false;
+          } else {
+            setSuccessFor(loginpw);
+          }		
+        }
+
+        function setErrorFor(input, message) {
+          const formControl = input.parentElement;
+          const small = formControl.querySelector('small');
+          formControl.className = 'login-form-control error';
+          small.innerText = message;
+        }
+
+        function setSuccessFor(input) {
+          const formControl = input.parentElement;
+          formControl.className = 'login-form-control success';
+        }
+        
+        $( "#loginpw" ).on( "click", function() {
+          $( ".login-form-control" ).removeClass( "error", 200);
+        });    
+    });
+    </script>
+  
+  </body>
+</html>

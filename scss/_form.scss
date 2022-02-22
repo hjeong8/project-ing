@@ -1,74 +1,163 @@
-select {
-  width:100%;
-  border:1px solid #999;
-  background:url('/img/arrow-down.png') no-repeat;
-  background-position: right 0.75rem center;     
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance : none;
-  cursor: pointer;
+%form-base {
+  display: block;
+  width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  color: $color-black;
+  border-radius: $radius;
+  transition: border 200ms ease-in-out;
+  appearance: none; 
+  text-overflow: ellipsis;
   &::-ms-expand {
     display: none;
   }
-}
-select, input{
+
   &::placeholder {
-    color: $color-gray-light-c; 
+    color: $color-placeholder; 
   }
-  &:not(:disabled):hover{
-    border: 1px solid $color-gray;
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus,
+  &:not(:disabled):active {
+    border: 1px solid $color-secondary;
   }
-  &:disabled{
-    background-color: $color-gray-light-e;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
   }
+}
+input[type="text"]:read-only{  
+    color: $color-secondary;
+    background: $color-bg-light-f9;
+    cursor: default;
+    &::placeholder{
+      color: $color-secondary;
+    }
+    &:hover,&:focus,&:active{
+      border:1px solid $color-border;
+    }
+}
+.form-select,
+.form-input {
+  @extend %form-base;
+  font-size: 1rem;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  height: $lg-height-input;
+  padding: 0 15px;  
+  @include responsive(M){
+      font-size: $sm-font;
+      line-height: 16px;
+      letter-spacing: -0.005em;
+      height: $sm-height-input;
+      padding: 0 10px;
+  }
+}
+.select-group {
+  position: relative;
+
+  &.is-active {
+    .form-select {
+      border-color: $color-secondary;;
+    }
+
+    .ic-chevron {
+      color: $color-secondary;
+    }
+  }
+
+  .form-select {
+    padding-right: 25px;
+    text-overflow: ellipsis;
+  }    
+
+  .ic-chevron {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    font-size: 1.1rem;
+    color: $color-black;
+    pointer-events: none;
+  }
+}
+.input-search{
+  position: relative;
+  input{
+    padding-left: 35px;
+  }
+  .ic-search {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #757575;
+    pointer-events: none;
+  }
+}
+
+input[type="color"]:disabled ~ .color-log{
+  color: $color-secondary;
 }
 input[type="checkbox"]{
   appearance: none;
   -webkit-appearance: none;
   height: 24px;
   width: 24px;
-  border: 1px solid #ddd;
+  border: 1px solid $color-border;
   background-color: $color-white;
   border-radius: $radius;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox;
   &:hover{
     border-color: $color-primary;
   }
   &:after{
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f00c";
-    font-size: 1rem;
-    border: 1px solid $color-gray-light-c;
+    content: "\e905";
+    font-family: "oneulook";
+    font-weight: 900;    
+    font-size: 1.2rem;
     color: $color-white;
     display: none;
   }
   &:checked{
     background-color: $color-primary;
-    border: 1px solid $color-primary;
+    border-color: $color-primary;
   }
   &:checked:after{
     display: block;
   }
 }
-.check-wrap{
-  display: inline-flex;
-  align-items: center;
-  label{
-    padding-left: 8px;
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+
+  border: 1px solid $color-border;
+  transition: 0.1s all linear;
+  margin-right: 2px;
+  cursor: pointer;
+  position: relative;
+  &:hover{
+    border-color: $color-primary;
+  }
+  &:checked {
+    border: 6px solid $color-primary;
   }
 }
-
-.modal-form-section>.container>.row>*{
-    margin-top: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
+input[type="radio"] ~ label{
+  cursor: pointer;
+  margin-right: 20px;
 }
-.form-label{
-    padding-top: 7px;
-    padding-bottom: 7px;
-    font-size: inherit;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
